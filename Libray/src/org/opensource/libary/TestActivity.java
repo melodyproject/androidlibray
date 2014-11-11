@@ -46,7 +46,7 @@ public class TestActivity extends BaseActivity {
 		params3.addParam("pwd", "123456");
 		Bitmap bitmap=ImageUtils.readBitMap("/mnt/sdcard/aa.jpg");
 		params3.setBitmap(bitmap);//必须要设置
-		params3.addParam("pic", ImageUtils.getByteStream(bitmap).toByteArray());
+		params3.addParam("pic", ImageUtils.getPicBytes(bitmap));
 		uploadAsync.setParam(params3);
 		HttpService.getInstance().addImmediateReq(uploadAsync);
 	}

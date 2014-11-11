@@ -141,21 +141,25 @@ public class ImageUtils {
 	}
 	
 	/**
-	 * 取得字节输出流
-	 * @param filePath
-	 * @return
+	 * 取得图片字节数组
+	 * @param bitmap
+	 * @return byte[]
 	 */
-	public static ByteArrayOutputStream getByteStream(Bitmap bitmap) {
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-		//其他地方还有这个Bitmap的引用,此处不能recyle.....
-		
+	public static byte[] getPicBytes(Bitmap bitmap) {
+		ByteArrayOutputStream baos =null;
+		byte[] bytes=null;
+		if(null!=bitmap){
+			baos = new ByteArrayOutputStream();
+			//其他地方还有这个Bitmap的引用,此处不能recyle.....
+			bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+			bytes=baos.toByteArray();
+		}
 		/*if(bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)){
 			if(null!=bitmap){
 				bitmap.recycle();
 				bitmap=null;
 			}
 		}*/
-		return baos;
+		return bytes;
 	}
 }
