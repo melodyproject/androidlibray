@@ -117,7 +117,7 @@ public class CrashException extends Exception implements UncaughtExceptionHandle
 			//判断是否挂载了SD卡
 			String storageState = Environment.getExternalStorageState();		
 			if(storageState.equals(Environment.MEDIA_MOUNTED)){
-				savePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/OSChina/Log/";
+				savePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/crash/Log/";
 				File file = new File(savePath);
 				if(!file.exists()){
 					file.mkdirs();
@@ -231,7 +231,6 @@ public class CrashException extends Exception implements UncaughtExceptionHandle
 		//显示异常信息&发送报告
 		
 		Println.debug(""+crashReport);
-		
 		/*new Thread() {
 			public void run() {
 				Looper.prepare();

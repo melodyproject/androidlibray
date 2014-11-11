@@ -24,6 +24,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
+import org.opensource.libary.common.CrashException;
 import org.opensource.libary.utils.Println;
 import android.os.AsyncTask;
 
@@ -175,9 +176,10 @@ public abstract class HttpReq extends AsyncTask<Void, Integer, Object> {
 			}
 			return result;
 		} catch (Exception e) {
-			if(mCallBack!=null){
-				mCallBack.onError(e);
-			}
+			//if(mCallBack!=null){
+				CrashException.http(e);
+			//	mCallBack.onError(e);
+			//}
 			return null;
 		}
 	}
@@ -307,6 +309,7 @@ public abstract class HttpReq extends AsyncTask<Void, Integer, Object> {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+			//CrashException.io(e);
 		}
 		return result;
 	}

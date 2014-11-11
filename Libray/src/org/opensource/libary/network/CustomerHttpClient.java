@@ -21,8 +21,8 @@ public class CustomerHttpClient {
 	private final static int MAX_TOTAL_CONNECTIONS = 10000;   
 	private final static int WAIT_TIMEOUT = 150000;   
 	private final static int MAX_ROUTE_CONNECTIONS = 800;   
-	private final static int CONNECT_TIMEOUT = 20000;   
-	private final static int READ_TIMEOUT = 20000;
+	private final static int CONNECT_TIMEOUT = 150000;   
+	private final static int READ_TIMEOUT = 150000;
 	private static HttpClient customerHttpClient;
 
 	private CustomerHttpClient() {}
