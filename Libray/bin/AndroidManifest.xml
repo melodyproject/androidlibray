@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.opensource.libary"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    
+    
+    <application
+        android:name="org.opensource.libary.AppStart"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="org.opensource.libary.TestActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="org.opensource.libary.receiver.PushReceiver" >
+            <intent-filter>
+
+                <!-- 手机开机 -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <!-- 手机唤醒解锁 -->
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+            
+            <intent-filter>
+                
+                <!-- 程序包安装与卸载 -->
+                <action android:name="android.intent.action.PACKAGE_ADDED" >
+                </action>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" >
+                </action>
+				
+                <data android:scheme="package" >
+                </data>
+            </intent-filter>
+        </receiver>
+
+        <service android:name="org.opensource.libary.service.ObserverNetworkService" >
+        </service>
+    </application>
+
+</manifest>
