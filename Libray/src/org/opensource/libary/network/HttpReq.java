@@ -32,7 +32,10 @@ import android.os.AsyncTask;
  * 处理网络请求的抽象类，异步发出网络请求;
  * <br/>
  * 返回网络数据后并响应回调函数;
+ * 
  * @author fuqiang
+ * @version 1.0
+ * @created 2014/11/11 
  */
 public abstract class HttpReq extends AsyncTask<Void, Integer, Object> {
 	protected String mHost = null;//请求主机地址

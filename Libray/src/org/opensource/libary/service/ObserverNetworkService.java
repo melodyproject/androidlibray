@@ -20,7 +20,9 @@ import android.os.IBinder;
 /**
  * 监听接收网络状态发生改变的service
  * 
- * @author fuqiang 2014/11/2
+ * @author fuqiang
+ * @version 1.0
+ * @created 2014/11/2 
  */
 public class ObserverNetworkService extends Service {
 	private Binder mBinder = new NetWorkerBinder();

@@ -6,10 +6,19 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 
+/**
+ * 管理activity 进栈 和 出栈 操作
+ * 
+ * @author fuqiang
+ * @version 1.0
+ * @created 2014/11/11 
+ */
 public class AppManager {
+	
 	private static Stack<Activity> sActivityStack;
+	
 	private static AppManager instance;
-
+	
 	private AppManager() {
 	}
 	

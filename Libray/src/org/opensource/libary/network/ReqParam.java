@@ -15,7 +15,10 @@ import android.graphics.Bitmap;
 /**
  * 网络请求参数存储类
  * 
- * */
+ * @author fuqiang
+ * @version 1.0
+ * @created 2014/11/11 
+ */
 public class ReqParam {
 	private Map<String, String> mParams = new HashMap<String, String>();//参数存储容器map
 	public Bitmap mBitmap = null;//上传本地图片bitmap对象

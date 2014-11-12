@@ -8,6 +8,13 @@ import org.opensource.libary.model.BaseVO;
 import org.opensource.libary.utils.Println;
 import android.content.Context;
 
+/**
+ * 异步请求网络
+ * 
+ * @author fuqiang
+ * @version 1.0
+ * @created 2014/11/11 
+ */
 @SuppressWarnings("unused")
 public class HttpReqAsync extends HttpReq {
 	private Class<? extends BaseVO> mTargetClass;// 对象类型
