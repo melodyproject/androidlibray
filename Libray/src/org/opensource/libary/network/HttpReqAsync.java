@@ -116,5 +116,18 @@ public class HttpReqAsync extends HttpReq {
 		}
 		return null;
 	}
-
+//	@Override
+//	protected void onPreExecute() {
+//		super.onPreExecute();
+//	}
+//	
+//	@Override
+//	protected Object doInBackground(Void... params) {
+//		return super.doInBackground(params);
+//	}
+//	
+//	@Override
+//	protected void onPostExecute(Object result) {
+//		super.onPostExecute(result);
+//	}
 }

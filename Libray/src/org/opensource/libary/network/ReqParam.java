@@ -40,6 +40,9 @@ public class ReqParam {
 			mParams.put(key, val);
 		}
 		public void addParam(String key, byte[] val){
+			if(null==val){
+				return;
+			}
 			double size = val.length / 1024;// KB
 			Println.debug("size:"+size);
 			Println.debug("size>400吗？"+(size>400));

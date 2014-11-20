@@ -8,6 +8,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -25,7 +26,9 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.opensource.libary.common.CrashException;
+import org.opensource.libary.utils.ConstansUtil;
 import org.opensource.libary.utils.Println;
+
 import android.os.AsyncTask;
 
 /**
@@ -45,9 +48,7 @@ public abstract class HttpReq extends AsyncTask<Void, Integer, Object> {
 	protected ReqParam mParam = new ReqParam();//参数封装类
 	protected HttpCallback mCallBack = null;//回调函数
 	private int mServiceTag = -1; 
-	private static final String ACCEPT = "Accept-Charset";
-	private static final String UTF8_ES = "UTF-8,*";
-	private static final String UTF8 = "UTF-8";
+	
 	
 	public void setServiceTag(int nTag) {
 		mServiceTag = nTag;
@@ -241,7 +242,7 @@ public abstract class HttpReq extends AsyncTask<Void, Integer, Object> {
 			int statusCode = response.getStatusLine().getStatusCode();
 			switch (statusCode) {
 			case HttpStatus.SC_OK:
-				result = EntityUtils.toString(response.getEntity(), UTF8);
+				result = EntityUtils.toString(response.getEntity(), ConstansUtil.UTF8);
 				break;
 			case HttpStatus.SC_FORBIDDEN: // 验证未通过
 				break;
@@ -254,7 +255,7 @@ public abstract class HttpReq extends AsyncTask<Void, Integer, Object> {
 	
 	private HttpResponse executeLoad(HttpUriRequest req) throws Exception {
 		HttpClient httpclient = CustomerHttpClient.getInstance();
-		req.addHeader(ACCEPT, UTF8_ES);
+		req.addHeader(ConstansUtil.ACCEPT, ConstansUtil.UTF8_ES);
 		HttpResponse response = httpclient.execute(req);
 		return response;
 	}
@@ -312,7 +313,7 @@ public abstract class HttpReq extends AsyncTask<Void, Integer, Object> {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-			//CrashException.io(e);
+			CrashException.io(e);
 		}
 		return result;
 	}

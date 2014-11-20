@@ -12,7 +12,9 @@ import java.util.Date;
 import org.apache.http.HttpException;
 import org.opensource.libary.AppStart;
 import org.opensource.libary.R;
+import org.opensource.libary.utils.ConstansUtil;
 import org.opensource.libary.utils.Println;
+
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.os.Environment;
@@ -30,8 +32,6 @@ public class CrashException extends Exception implements UncaughtExceptionHandle
 	 * 
 	 */
 	private static final long serialVersionUID = -1122185615558203440L;
-	
-	private final static boolean Debug = true;//是否保存错误日志
 	
 	/** 定义异常类型 */
 	public final static byte TYPE_NETWORK 	= 0x01;
@@ -57,7 +57,7 @@ public class CrashException extends Exception implements UncaughtExceptionHandle
 		super(excp);
 		this.type = type;
 		this.code = code;		
-		if(Debug){
+		if(ConstansUtil.sDEBUG_LOG){
 			this.saveErrorLog(excp);
 		}
 	}
@@ -229,17 +229,25 @@ public class CrashException extends Exception implements UncaughtExceptionHandle
 		
 		final String crashReport = getCrashReport(context, ex);
 		//显示异常信息&发送报告
-		
 		Println.debug(""+crashReport);
-		/*new Thread() {
-			public void run() {
-				Looper.prepare();
-				UIHelper.sendAppCrashReport(context, crashReport);
-				Looper.loop();
-			}
-
-		}.start();*/
-		
+		if(ConstansUtil.sDEBUG_LOG){
+			new Thread() {
+				public void run() {
+					try {
+						//发送邮件通知,客户端出现错误了.....
+						EmailSender sender = new EmailSender();
+						sender.setProperties("smtp.163.com", "25");
+						sender.setMessage("devloper_melody@163.com", "Android客户端 - 错误报告",
+								crashReport);
+						sender.setReceiver(new String[] { "1904992259@qq.com" });
+						sender.sendEmail("smtp.163.com", "devloper_melody@163.com",
+								"fuqiang921230");
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}.start();
+		}
 		return true;
 	}
 	/**

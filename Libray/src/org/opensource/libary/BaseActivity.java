@@ -4,8 +4,6 @@ import org.opensource.libary.common.AppManager;
 import org.opensource.libary.network.ConnectStateCallback;
 import org.opensource.libary.service.ObserverNetworkService;
 import org.opensource.libary.service.ObserverNetworkService.NetWorkerBinder;
-import org.opensource.libary.utils.Println;
-
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -31,7 +29,6 @@ public class BaseActivity extends Activity {
 		// 添加Activity到堆栈
 		AppManager.getAppManager().addActivity(this);
 		
-		Println.setDebug(true);//设置为调试模式
 		Intent service = new Intent();
 		service.setClass(this, ObserverNetworkService.class);
 		flag=bindService(service, conn, BIND_AUTO_CREATE);// 绑定service
