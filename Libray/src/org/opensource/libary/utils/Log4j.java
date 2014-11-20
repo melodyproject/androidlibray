@@ -14,7 +14,7 @@ import android.util.Log;
  * 
  * @author fuqiang 2014/11/2
  */
-public class Println {
+public class Log4j {
 	private static final String TAG = "LogUtils";
 
 	/**

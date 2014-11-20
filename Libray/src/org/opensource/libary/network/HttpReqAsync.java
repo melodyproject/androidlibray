@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import org.opensource.libary.model.BaseVO;
-import org.opensource.libary.utils.Println;
+import org.opensource.libary.utils.Log4j;
 import android.content.Context;
 
 /**
@@ -85,7 +85,7 @@ public class HttpReqAsync extends HttpReq {
 			breader.close();
 			ireader.close();
 			jsonStr=sb.toString();
-			Println.debug("relst:\n"+jsonStr);
+			Log4j.debug("relst:\n"+jsonStr);
 		  /*switch (mResultType) {
 			case BaseVO.TYPE_BEAN:
 				

@@ -13,7 +13,7 @@ import org.apache.http.HttpException;
 import org.opensource.libary.AppStart;
 import org.opensource.libary.R;
 import org.opensource.libary.utils.ConstansUtil;
-import org.opensource.libary.utils.Println;
+import org.opensource.libary.utils.Log4j;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -229,7 +229,7 @@ public class CrashException extends Exception implements UncaughtExceptionHandle
 		
 		final String crashReport = getCrashReport(context, ex);
 		//显示异常信息&发送报告
-		Println.debug(""+crashReport);
+		Log4j.debug(""+crashReport);
 		if(ConstansUtil.sDEBUG_LOG){
 			new Thread() {
 				public void run() {

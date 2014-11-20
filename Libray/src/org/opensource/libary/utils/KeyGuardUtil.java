@@ -30,7 +30,7 @@ public class KeyGuardUtil {
 	public void optionKeyGuardHiden(Context ctx, final View view) {
 		final InputMethodManager imm = (InputMethodManager) ctx
 				.getSystemService(ctx.INPUT_METHOD_SERVICE);
-		Println.debug("mkl:" + imm.isActive() + "");
+		Log4j.debug("mkl:" + imm.isActive() + "");
 		imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 	}
 	

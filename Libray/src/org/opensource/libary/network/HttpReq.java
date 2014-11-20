@@ -27,7 +27,7 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.opensource.libary.common.CrashException;
 import org.opensource.libary.utils.ConstansUtil;
-import org.opensource.libary.utils.Println;
+import org.opensource.libary.utils.Log4j;
 
 import android.os.AsyncTask;
 
@@ -156,7 +156,7 @@ public abstract class HttpReq extends AsyncTask<Void, Integer, Object> {
 	@Override
 	protected void onPreExecute() {
 		super.onPreExecute();
-		Println.debug("onPreExecute:"+System.currentTimeMillis());
+		Log4j.debug("onPreExecute:"+System.currentTimeMillis());
 	}
 	
 	/**
@@ -165,7 +165,7 @@ public abstract class HttpReq extends AsyncTask<Void, Integer, Object> {
 	 */
 	@Override
 	protected Object doInBackground(Void... params) {
-		Println.debug("doInBackground:"+System.currentTimeMillis());
+		Log4j.debug("doInBackground:"+System.currentTimeMillis());
 		try {
 			Object result = null;
 			if ("GET".equals(mMethod)) {
@@ -194,7 +194,7 @@ public abstract class HttpReq extends AsyncTask<Void, Integer, Object> {
 	 */
 	@Override
 	protected void onPostExecute(Object result) {
-		Println.debug("onPostExecute:"+System.currentTimeMillis());
+		Log4j.debug("onPostExecute:"+System.currentTimeMillis());
 		if (mCallBack != null) {
 			//回调....
 			mCallBack.onResult(result);
@@ -284,8 +284,8 @@ public abstract class HttpReq extends AsyncTask<Void, Integer, Object> {
 							// 获取参数值
 							String value = (p.length == 2 ? decode(p[1]) : "");
 							//取得当前客户端的字符编码
-							Println.debug("当前默认的编码:"+Charset.defaultCharset());
-							Println.debug("是否支持UTF8编码:"+Charset.isSupported("UTF-8"));
+							Log4j.debug("当前默认的编码:"+Charset.defaultCharset());
+							Log4j.debug("是否支持UTF8编码:"+Charset.isSupported("UTF-8"));
 							entity.addPart(p[0], new StringBody(value,Charset.forName(HTTP.UTF_8)));
 						}
 					}

@@ -5,7 +5,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import org.opensource.libary.network.ConnectStateCallback;
-import org.opensource.libary.utils.Println;
+import org.opensource.libary.utils.Log4j;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -66,11 +66,11 @@ public class ObserverNetworkService extends Service {
 		@Override
 		public void run() {
 			if (isConnected()) {
-				Println.info("网络连接成功");
+				Log4j.info("网络连接成功");
 				mConnected = true;
 			} else {
 				mConnected = false;
-				Println.info("网络连接失败");
+				Log4j.info("网络连接失败");
 			}
 			if (mCallback != null) {
 				// 通知网络状态发生改变
@@ -95,7 +95,7 @@ public class ObserverNetworkService extends Service {
 		public void onReceive(Context context, Intent intent) {
 			if (ConnectivityManager.CONNECTIVITY_ACTION.equals(intent
 					.getAction())) {
-				Println.info("network change!");
+				Log4j.info("network change!");
 				Timer timer = new Timer();
 				timer.schedule(new NetWorkerTimerTask(), new Date());
 			}

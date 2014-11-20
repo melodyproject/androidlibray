@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.opensource.libary.utils.ConstansUtil;
-import org.opensource.libary.utils.Println;
+import org.opensource.libary.utils.Log4j;
 
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
@@ -62,7 +62,7 @@ public class CacheHelpher implements ImageCache {
 		if (((bitmap = mLruCache.get(url)) != null)
 				|| ((soft = mSoftCache.get(url)) != null)
 				&& ((bitmap = soft.get()) != null)) {
-			Println.debug("从内存中取");
+			Log4j.debug("从内存中取");
 			if (soft != null) {
 				mLruCache.put(url, bitmap);// 添加到强引用缓存中去
 				mSoftCache.remove(url);// 从软引用缓存中移除

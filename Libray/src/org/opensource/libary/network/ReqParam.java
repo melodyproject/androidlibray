@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.opensource.libary.utils.ImageUtils;
-import org.opensource.libary.utils.Println;
+import org.opensource.libary.utils.Log4j;
 import android.graphics.Bitmap;
 
 /**
@@ -44,8 +44,8 @@ public class ReqParam {
 				return;
 			}
 			double size = val.length / 1024;// KB
-			Println.debug("size:"+size);
-			Println.debug("size>400吗？"+(size>400));
+			Log4j.debug("size:"+size);
+			Log4j.debug("size>400吗？"+(size>400));
 			if (size > 400 && null!= mBitmap) {// 进行压缩
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
 				double i = size / 400;
@@ -60,7 +60,7 @@ public class ReqParam {
 				buffer.append((char)val[i]);
 			}
 			
-			Println.debug("buffer======="+ buffer.toString());
+			Log4j.debug("buffer======="+ buffer.toString());
 			mParams.put(key, buffer.toString());
 		}
 		public void addParam(String key, Object val)
@@ -101,7 +101,7 @@ public class ReqParam {
 				}
 				
 			}
-			Println.debug("p-----"+strbuf.toString());
+			Log4j.debug("p-----"+strbuf.toString());
 			String p = strbuf.toString().replaceAll("\n", "").replaceAll("\r", "");
 			
 			return p;

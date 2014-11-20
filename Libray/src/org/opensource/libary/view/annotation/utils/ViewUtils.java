@@ -20,7 +20,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import org.opensource.libary.utils.Println;
+import org.opensource.libary.utils.Log4j;
 import org.opensource.libary.view.annotation.ContentView;
 import org.opensource.libary.view.annotation.EventListenerManager;
 import org.opensource.libary.view.annotation.PreferenceInject;
@@ -81,7 +81,7 @@ public class ViewUtils {
                 Method setContentViewMethod = handlerType.getMethod("setContentView", int.class);
                 setContentViewMethod.invoke(handler, contentView.value());
             } catch (Throwable e) {
-              Println.debug(""+e.getMessage());
+              Log4j.debug(""+e.getMessage());
             }
         }
 
@@ -98,7 +98,7 @@ public class ViewUtils {
                             field.set(handler, view);
                         }
                     } catch (Throwable e) {
-                       Println.debug(""+e.getMessage());
+                       Log4j.debug(""+e.getMessage());
                     }
                 } else {
                     ResInject resInject = field.getAnnotation(ResInject.class);
@@ -111,7 +111,7 @@ public class ViewUtils {
                                 field.set(handler, res);
                             }
                         } catch (Throwable e) {
-                            Println.debug(""+e.getMessage());
+                            Log4j.debug(""+e.getMessage());
                         }
                     } else {
                         PreferenceInject preferenceInject = field.getAnnotation(PreferenceInject.class);
@@ -123,7 +123,7 @@ public class ViewUtils {
                                     field.set(handler, preference);
                                 }
                             } catch (Throwable e) {
-                               Println.debug(""+e.getMessage());
+                               Log4j.debug(""+e.getMessage());
                             }
                         }
                     }
@@ -160,7 +160,7 @@ public class ViewUtils {
                                     EventListenerManager.addEventMethod(finder, info, annotation, handler, method);
                                 }
                             } catch (Throwable e) {
-                               Println.debug(""+e.getMessage());
+                               Log4j.debug(""+e.getMessage());
                             }
                         }
                     }
